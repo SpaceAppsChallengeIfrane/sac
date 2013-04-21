@@ -1,3 +1,6 @@
+final int CHAOS_VIEW = 0;
+final int MAP_VIEW = 1;
+int view = CHAOS_VIEW; // Default
 int numBalls = 1000;
 float spring = 0.05;
 float gravity = 0.05;

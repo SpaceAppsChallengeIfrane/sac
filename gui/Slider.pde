@@ -34,7 +34,7 @@ class Slider
     {
       over = false;
     }
-    if (mousePressed && over)
+    if (mousePressed && (mouseButton == LEFT) && over)
     {
       locked = true;
     }

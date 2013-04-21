@@ -1,7 +1,6 @@
 class RegionSelector
 {
   float x, y;
-  float longitue, latitude;
   
   public RegionSelector(float x_, float y_)
   {
@@ -33,5 +32,15 @@ class RegionSelector
     line(0, y, width, y);
     
     noStroke();
+  }
+  
+  float getLongitude()
+  {
+    return x;
+  }
+  
+  float getLatitude()
+  {
+    return y;
   }
 }
