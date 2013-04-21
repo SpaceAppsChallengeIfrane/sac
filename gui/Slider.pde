@@ -1,6 +1,6 @@
 class Slider 
 {
-  int swidth, sheight;    // width and height of bar
+  float swidth, sheight;    // width and height of bar
   float xpos, ypos;       // x and y position of bar
   float spos, newspos;    // x position of slider
   float sposMin, sposMax; // max and min values of slider
@@ -9,12 +9,12 @@ class Slider
   boolean locked;
   float ratio;
 
-  Slider (float xp, float yp, int sw, int sh, int l)
+  Slider (float xp, float yp, float sw, float sh, int l)
   {
     swidth = sw;
     sheight = sh;
-    int widthtoheight = sw - sh;
-    ratio = (float)sw / (float)widthtoheight;
+    float widthtoheight = sw - sh;
+    ratio = (float) sw / (float)widthtoheight;
     xpos = xp;
     ypos = yp-sheight/2;
     spos = xpos + swidth/2 - sheight/2;
@@ -84,15 +84,16 @@ class Slider
       fill(102, 102, 102);
     }
     rect(spos, ypos, sheight, sheight);
-    fill(255, 255, 255);
+    fill(0);
     textAlign(CENTER);
-    text(ceil(getPos()), spos, ypos, swidth, sheight);
+    textSize(8);
+    text(Integer.toString(ceil(getPos())), xpos, ypos, swidth, sheight);
   }
 
   float getPos()
   {
     // Convert spos to be values between
     // 0 and the total width of the scrollbar
-    return (spos-xpos) * ratio;
+    return (spos - xpos) * ratio;
   }
 }

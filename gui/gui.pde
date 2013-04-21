@@ -1,18 +1,12 @@
-import ddf.minim.*;
-
-AudioPlayer player;
-Minim minim;//audio context
-
-int numBalls = 3000;
+int numBalls = 1000;
 float spring = 0.05;
 float gravity = 0.05;
 float friction = -0.59;
 Ball[] balls = new Ball[numBalls];
+Slider s = new Slider(100, 100, 100, 10, 5);
+RegionSelector rs = new RegionSelector(300, 300);
 
 void setup() {
-  minim = new Minim(this);
-  player = minim.loadFile("bg.mp3", 2048);
-  player.play();
   size(640, 480);
   frame.setResizable(true);
   for (int i = 0; i < numBalls; i++)
@@ -29,13 +23,19 @@ void setup() {
 void draw()
 {
   background(0);
-  for(int i = 0; i < numBalls; ++ i)
+  /*for(int i = 0; i < numBalls; ++ i)
   {
     balls[i].collide();
     balls[i].move();
     balls[i].display();
-  }
-  String[] items = {"Item 1", "Item 2", "ITEM 3"};
-  DropDown dd = new DropDown("Criteria", items);
+  }*/
+  s.update();
+  s.display();
+  
+  String[] items = {"Chaotic Space", "World Map"};
+  DropDown dd = new DropDown("Select View", items);
   dd.display(250, 200);
+  
+  rs.update();
+  rs.display();
 }

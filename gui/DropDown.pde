@@ -31,6 +31,7 @@ class DropDown
     float h = 20;
     
     textAlign(CENTER);
+    textSize(14);
     fill(255, 52, 100, 50);
     rect(x, ycoord, w, h);
     fill(255, 255, 255);
