@@ -113,18 +113,18 @@ class DBOperations {
 
   }
 }
-
-void setup(){
-
-DBOperations myops = new DBOperations();
-
-myops.fetch("http://localhost:27080/test/imgbz/_find?criteria="+URLEncoder.encode("{\"loc\": {\"$near\": [10.0, 10.0] } }"));
-
-println(myops.urls);
-println(myops.geons);
-println(myops.feats);
-println(myops.lats);
-println(myops.lons);
-
-
-}
+//
+//void setup(){
+//
+//DBOperations myops = new DBOperations();
+//
+//myops.fetch("http://localhost:27080/test/imgbz/_find?criteria="+URLEncoder.encode("{\"loc\": {\"$near\": [10.0, 10.0] } }"));
+//
+//println(myops.urls);
+//println(myops.geons);
+//println(myops.feats);
+//println(myops.lats);
+//println(myops.lons);
+//
+//
+//}

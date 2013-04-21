@@ -126,25 +126,24 @@ class Ball
         drag = true;
         
         /* Display image */
-        if(img == null)
+        if(pic.img == null)
         {
-          img = loadImage("http://eol.jsc.nasa.gov/sseop/images/ISD/lowres/AS07/AS07-11-2013.JPG", "jpg");
-          img.resize(100, 100);
+          pic.img = loadImage("http://eol.jsc.nasa.gov/sseop/images/ISD/lowres/AS07/AS07-11-2013.JPG", "jpg");
+          pic.img.resize(100, 100);
         }
         if(x + 115 < width)
         {
           fill(c);
           textAlign(LEFT);
-          text(pic.geon, x + 15, y);
-          text(pic.feat, x + 20, y); 
-          image(img, x + 15, y - 140);
+          text(pic.feat, x + 15, y);
+          image(pic.img, x + 15, y - 140);
         }
         else
         {
-          image(img, x - 115, y - 140);
+          image(pic.img, x - 115, y - 140);
           fill(c);
           textAlign(LEFT);
-          text(description,  x - 115, y); 
+         text(pic.feat,  x - 115, y); 
         }
       }
       else
@@ -161,14 +160,14 @@ class Ball
         line(x, y, x + 15, y - 20);
         line(x + 15, y - 20, x + 115, y - 20);
         fill(c);
-        text(brief, x + 15, y - 25);
+        text(pic.geon, x + 15, y - 25);
       }
       else
       {
         line(x, y, x - 15, y - 20);
         line(x - 15, y - 20, x - 115, y - 20);
         fill(c);
-        text(brief, x - 115, y - 25);
+        text(pic.feat, x - 115, y - 25);
       }
       noStroke();
     }
@@ -191,14 +190,6 @@ class Ball
     ellipse(x, y, diameter, diameter);
   }
   
-  void setDescription(String description_)
-  {
-    description = description_;
-  }
-  
-  void setBrief(String brief_)
-  {
-    brief = brief_;
-  }
+
 }
 
