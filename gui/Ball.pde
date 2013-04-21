@@ -93,6 +93,7 @@ class Ball
   
   void display()
   {
+    
     if (mousePressed == false){
     
       float r = 50;
@@ -155,7 +156,7 @@ class Ball
     }
     if(mousePressed == true && ! overCircle(x, y, diameter))
     {
-      float r = 150;
+      float r = 300;
       if(sq(x - mouseX) + sq(y - mouseY) < sq(r))
       {
         if(x > mouseX)
@@ -191,46 +192,62 @@ class Ball
         /* Display image */
         if(pic.img == null)
         {
-          pic = db.fetch();
-          pic.img.resize(100, 100);
+          pic= db.fetch();
+          pic.img.resize(200, 200);
         }
         if(x + 115 < width)
         {
           fill(c);
           textAlign(LEFT);
           text(pic.feat, x + 15, y);
-          image(pic.img, x + 15, y - 140);
+          text(pic.geon, x + 15, y-25);
+          text("LONG: "+pic.lon+"", x + 15, y + 15);
+          text("LAT: "+pic.lat+"", x + 15, y + 30);
+          image(pic.img, x + 15, y - 240);
+          stroke(c);
+          line(x, y, x + 15, y - 20);
+          line(x + 15, y - 20, x + 115, y - 20);
+          noStroke();
         }
         else
         {
-          image(pic.img, x - 115, y - 140);
+          image(pic.img, x - 115, y - 240);
           fill(c);
-          textAlign(LEFT);
-         text(pic.feat,  x - 115, y); 
+          textAlign(RIGHT);
+          text(pic.feat,  x - 115, y); 
+          text(pic.geon, x -115, y-25);
+          text("LONG: "+pic.lon+"", x - 115, y + 15);
+          text("LAT: "+pic.lat+"", x - 115, y +30);
+          stroke(c);
+          line(x, y, x - 15, y - 20);
+          line(x - 15, y - 20, x - 115, y - 20);
+          noStroke();
         }
+          
+        
       }
       else
       {
         drag = false;
       }
-      color ctransparent = color(red(c), green(c), blue(c), 50);
+      color ctransparent = color(0,255,255, 90);
       fill(ctransparent);
       ellipse(x, y, diameter + 10, diameter + 10);
       
       stroke(c);
       if(x + 115 < width)
       {
-        line(x, y, x + 15, y - 20);
-        line(x + 15, y - 20, x + 115, y - 20);
+//        line(x, y, x + 15, y - 20);
+//        line(x + 15, y - 20, x + 115, y - 20);
         fill(c);
-        text(pic.geon, x + 15, y - 25);
+//        text(pic.geon, x + 15, y - 25);
       }
       else
       {
-        line(x, y, x - 15, y - 20);
-        line(x - 15, y - 20, x - 115, y - 20);
+//        line(x, y, x - 15, y - 20);
+//        line(x - 15, y - 20, x - 115, y - 20);
         fill(c);
-        text(pic.feat, x - 115, y - 25);
+//        text(pic.geon, x - 115, y - 25);
       }
       noStroke();
     }

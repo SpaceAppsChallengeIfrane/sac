@@ -11,12 +11,15 @@ Slider s;
 DBOperations db= new DBOperations();
 
 void setup() {
+  
   size(displayWidth, displayHeight);
   frame.setResizable(true);
   for (int i = 0; i < numBalls; i++)
   {
+    
     color c = color(random(255), random(255), random(255));
     balls[i] = new Ball(c, random(width), random(height), random(5, 15), i, balls);
+  
   }
   noStroke();
   textSize(14);

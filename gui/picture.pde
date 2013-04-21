@@ -19,9 +19,5 @@ class Picture{
     this.lat = lat;    
   }
   
-  void display(int xpos, int ypos){
-     image(this.img, xpos, ypos);
-  }
-  
 }
 

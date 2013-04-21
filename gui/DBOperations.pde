@@ -17,7 +17,7 @@ class DBOperations {
   }
   
   Picture fetch(){
-    String randURL = "http://localhost:27080/test/imgbz/_find?criteria={\"random\":"+int(random(219841))+"}";
+  String randURL = "http://localhost:27080/test/imgbz/_find?criteria={\"random\":"+int(random(218341))+"}";
     String results = loadStrings(randURL)[0];
     
     String URLpattern = "(http.*?G)";
@@ -45,15 +45,17 @@ class DBOperations {
     mLON.find();
     mLAT.find();
     
-    newpic.url=mURL.group(1);
+    newpic.url=mURL.group(1);  
     newpic.geon=mGEON.group(1);
     newpic.feat=mFEAT.group(1);
     newpic.lon =Double.parseDouble(mLON.group(1));
     newpic.lat =Double.parseDouble(mLAT.group(1));
-    newpic.img = loadImage(newpic.url);
+    newpic.img =loadImage(newpic.url);
+    
     return newpic;
-  }  
-   void fetch(String url){
+  }
+  
+   void fetchRegion(String url){
   
     String results = loadStrings(url)[0];
     
