@@ -1,13 +1,13 @@
 final int CHAOS_VIEW = 0;
 final int MAP_VIEW = 1;
-int view = CHAOS_VIEW; // Default
-int numBalls = 1000;
+int view = MAP_VIEW; // Default
+int numBalls = 750;
 float spring = 0.05;
 float gravity = 0.05;
 float friction = -0.59;
 Ball[] balls = new Ball[numBalls];
-Slider s = new Slider(100, 100, 100, 10, 5);
-RegionSelector rs = new RegionSelector(300, 300);
+RegionSelector rs;
+Slider s;
 
 void setup() {
   size(640, 480);
@@ -21,17 +21,31 @@ void setup() {
   }
   noStroke();
   textSize(14);
+  
+  s = new Slider(100, 100, 100, 10, 5);
+  rs = new RegionSelector(width / 2, height / 2);
 }
 
 void draw()
 {
   background(0);
-  /*for(int i = 0; i < numBalls; ++ i)
+  switch(view)
+  {
+    default: break;
+    case CHAOS_VIEW:
+      break;
+     case MAP_VIEW:
+      rs.update();
+      rs.display();
+      break;
+  }
+  /*
+  for(int i = 0; i < numBalls; ++ i)
   {
     balls[i].collide();
     balls[i].move();
     balls[i].display();
-  }*/
+  }
   s.update();
   s.display();
   
@@ -41,4 +55,5 @@ void draw()
   
   rs.update();
   rs.display();
+  */
 }
