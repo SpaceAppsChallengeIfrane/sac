@@ -1,3 +1,4 @@
+int count;
 class Ball
 {
   Picture pic;
@@ -10,6 +11,7 @@ class Ball
   float vy = 0;
   int id;
   Ball[] others;
+  
   
   boolean overCircle(float x, float y, float diameter)
   {
@@ -33,8 +35,9 @@ class Ball
     diameter = din;
     id = idin;
     others = oin;
-    vx = random(255) % 3;
-    vy = random(100) % 3;
+    vx = random(-1,1)*5;
+    vy = random(-1,1)*5;
+    pic = new Picture();
   } 
   
   void collide()
@@ -90,6 +93,66 @@ class Ball
   
   void display()
   {
+    if (mousePressed == false){
+    
+      float r = 50;
+      if(sq(x - mouseX) + sq(y - mouseY) < sq(r)){
+       count++;
+       if (count>20) count=20;
+       if (count<=20){
+        if(x > mouseX)
+        {
+          vx = - 0.1;
+          
+           if (vx <= 0 ){
+            vx= 0;            
+           }
+           if (x < mouseX + 40){
+             vx=0;
+           }
+        }
+        else
+        {
+          vx = 0.1; 
+          
+          if (vx <= 0 ){
+            vx =  0.1*mouseX;
+         } 
+         if (x > mouseX - 40){
+             vx=0;
+           }
+        }
+        
+        if(y > mouseY)
+        {
+          vy = - 0.1;
+          
+          if (vy <= 0 ){
+            vy= 0;
+          }
+          if (y < mouseY + 40){
+             vy= 0;
+           }
+        }
+        else
+        {
+          vy = 0.1;
+          
+           if (vy <= 0 ){
+            vy=0.1*mouseY;
+           }
+           if (y > mouseY + 40){
+            vy= 0;
+           }
+        }
+       }
+        
+        if(abs(mouseX-pmouseX)>50 && abs(mouseY-pmouseY)>50){
+          count=0;
+        }
+      }
+    
+    }
     if(mousePressed == true && ! overCircle(x, y, diameter))
     {
       float r = 150;
@@ -128,7 +191,7 @@ class Ball
         /* Display image */
         if(pic.img == null)
         {
-          pic.img = loadImage("http://eol.jsc.nasa.gov/sseop/images/ISD/lowres/AS07/AS07-11-2013.JPG", "jpg");
+          pic = db.fetch();
           pic.img.resize(100, 100);
         }
         if(x + 115 < width)

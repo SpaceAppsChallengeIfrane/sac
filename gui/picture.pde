@@ -1,11 +1,11 @@
 class Picture{
   
-  PImage img;
-  String url;
-  String geon;
-  String feat;
-  double lon;
-  double lat;
+  PImage img = null;
+  String url = "url";
+  String geon= "geon";
+  String feat = "feat";
+  double lon = 1.1;
+  double lat = 0.0;
   
   public Picture(){
   }

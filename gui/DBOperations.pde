@@ -11,12 +11,12 @@ class DBOperations {
   List<String> lons = new ArrayList<String>();
   List<String> lats = new ArrayList<String>();
 
-//  List<Picture> pics = new ArrayList<Picture>();
+  List<Picture> pics = new ArrayList<Picture>();
 
   public DBOperations(){
   }
   
-  void fetch(){
+  Picture fetch(){
     String randURL = "http://localhost:27080/test/imgbz/_find?criteria={\"random\":"+int(random(219841))+"}";
     String results = loadStrings(randURL)[0];
     
@@ -38,33 +38,22 @@ class DBOperations {
     Matcher mLON = pLON.matcher(results);
     Matcher mLAT = pLAT.matcher(results);
     
-    while(mURL.find())
-    {
-      urls.add(mURL.group(1));
-    }
+    Picture newpic = new Picture();
+    mURL.find();
+    mGEON.find();
+    mFEAT.find();
+    mLON.find();
+    mLAT.find();
     
-    while(mGEON.find())
-    {
-      geons.add(mGEON.group(1));
-    }
-    
-    while(mFEAT.find())
-    {
-      feats.add(mFEAT.group(1));
-    }
-    
-    while(mLON.find())
-    {
-      lons.add(mLON.group(1));
-    }
-    
-    while(mLAT.find())
-    {
-      lats.add(mLAT.group(1));
-    }
+    newpic.url=mURL.group(1);
+    newpic.geon=mGEON.group(1);
+    newpic.feat=mFEAT.group(1);
+    newpic.lon =Double.parseDouble(mLON.group(1));
+    newpic.lat =Double.parseDouble(mLAT.group(1));
+    newpic.img = loadImage(newpic.url);
+    return newpic;
   }  
-  
-  void fetch(String url){
+   void fetch(String url){
   
     String results = loadStrings(url)[0];
     
