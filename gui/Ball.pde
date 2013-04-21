@@ -1,8 +1,6 @@
 class Ball
 {
-  String brief = "";
-  String description = "";
-  PImage img = null;
+  Picture pic;
   boolean drag = false;
   float angle = 0;
   color c;
@@ -137,7 +135,8 @@ class Ball
         {
           fill(c);
           textAlign(LEFT);
-          text(description, x + 15, y); 
+          text(pic.geon, x + 15, y);
+          text(pic.feat, x + 20, y); 
           image(img, x + 15, y - 140);
         }
         else
