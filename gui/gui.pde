@@ -1,10 +1,18 @@
-int numBalls = 1000;
+import ddf.minim.*;
+
+AudioPlayer player;
+Minim minim;//audio context
+
+int numBalls = 3000;
 float spring = 0.05;
 float gravity = 0.05;
 float friction = -0.59;
 Ball[] balls = new Ball[numBalls];
 
 void setup() {
+  minim = new Minim(this);
+  player = minim.loadFile("bg.mp3", 2048);
+  player.play();
   size(640, 480);
   frame.setResizable(true);
   for (int i = 0; i < numBalls; i++)
